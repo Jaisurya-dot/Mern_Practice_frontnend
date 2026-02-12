@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // npm i react-router-dom
- 
+import API_BASE_URL from '../../config/api.js';  // Create this file to manage API URLs
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -8,7 +8,6 @@ const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
-  const API_BASE_URL = "https://mern-practice-backend-ten.vercel.app";
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     if (error) setError('');  // Clear error on type

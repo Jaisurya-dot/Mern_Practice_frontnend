@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Modal from "../model/Model";  // fixed path + casing
 import LogoutButton from "../logout/Logout";
- 
+import API_BASE_URL from "../../config/api";
 
 const Table = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modal, setModal] = useState({ open: false, user: null, mode: "edit" });
-  const API_BASE_URL = "https://mern-practice-backend-ten.vercel.app";
   async function fetchUsers() {
     try {
       const response = await fetch(`${API_BASE_URL}/api/admins/users`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-      
+
       });
 
       if (!response.ok) {
@@ -40,12 +39,12 @@ const Table = () => {
       const response = await fetch(`${API_BASE_URL}/api/admins/${id}`, {
         method: "PUT",
         headers:
-          { 
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          },
-        
-     
+        {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+
+
         body: JSON.stringify(formData),
       });
 
