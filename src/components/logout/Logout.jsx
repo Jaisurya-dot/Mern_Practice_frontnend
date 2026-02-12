@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import API_BASE_URL from '../../config/api.js';
+
 
 const LogoutButton = () => {
     const navigate = useNavigate();
-
+    const API_BASE_URL = "https://mern-practice-backend-w82d.vercel.app";
     const handleLogout = async () => {
         try {
             // 1. Inform backend about logout
